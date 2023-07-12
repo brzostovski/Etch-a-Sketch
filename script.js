@@ -34,4 +34,9 @@ function etchASketch (gridSideSize) {
   })
 }
 
-etchASketch(500);
+function createCustomGrid () {
+  const customSize = window.prompt('Input grid side size:');
+  etchASketch(customSize);
+}
+
+createCustomGrid();
