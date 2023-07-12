@@ -19,6 +19,6 @@ body {
   border: solid red 1px;
 }
 
-.blank-tile {
-  border: solid black 1px;
+.tile:hover {
+  background-color: gray;
 }
