@@ -21,6 +21,17 @@ function createGrid(gridSideSize) {
   }
 }
 
+function randomValue() {
+  return Math.floor(Math.random() * 256);
+}
+
+function randomColor() {
+  const redValue = randomValue();
+  const greenValue = randomValue();
+  const blueValue = randomValue();
+  return `rgb(${redValue}, ${greenValue}, ${blueValue})`;
+}
+
 function etchASketch (gridSideSize) {
 
   createGrid(gridSideSize);
@@ -29,7 +40,8 @@ function etchASketch (gridSideSize) {
 
   tiles.forEach((tile) => {
     tile.addEventListener('mouseover', () => {
-      tile.classList.add('activated');
+      //tile.classList.add('activated');
+      tile.style.backgroundColor = randomColor();
     })
   })
 }
