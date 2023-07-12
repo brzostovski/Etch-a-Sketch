@@ -10,7 +10,7 @@ function createGrid(gridSideSize) {
     for (let j = 1; j <= gridSideSize; j++) {
 
       const newTile = document.createElement('div');
-      newTile.classList.add('blank', 'tile');
+      newTile.classList.add('tile');
       newTile.setAttribute('id', `tile_${i}.${j}`);
 
       newTile.style.gridRow = i;
@@ -21,4 +21,17 @@ function createGrid(gridSideSize) {
   }
 }
 
-createGrid(500);
+function etchASketch (gridSideSize) {
+
+  createGrid(gridSideSize);
+
+  const tiles = document.querySelectorAll('.tile');
+
+  tiles.forEach((tile) => {
+    tile.addEventListener('mouseover', () => {
+      tile.classList.add('activated');
+    })
+  })
+}
+
+etchASketch(500);
