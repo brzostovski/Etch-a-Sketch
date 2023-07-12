@@ -14,6 +14,11 @@ button {
   margin: 1rem;
 }
 
+.controls {
+  display: flex;
+  flex-direction: column;
+}
+
 .grid-container {
   height: 100vh;
   width: 100vh;
