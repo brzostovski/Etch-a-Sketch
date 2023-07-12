@@ -39,4 +39,14 @@ function createCustomGrid () {
   etchASketch(customSize);
 }
 
-createCustomGrid();
+const resetButton = document.querySelector('.reset');
+
+resetButton.addEventListener('click', () => {
+
+  const gridContainer = document.querySelector('.grid-container');
+  gridContainer.innerHTML = '';
+
+  createCustomGrid();
+
+  resetButton.textContent = 'Reset';
+})
