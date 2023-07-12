@@ -40,8 +40,13 @@ function etchASketch (gridSideSize) {
 
   tiles.forEach((tile) => {
     tile.addEventListener('mouseover', () => {
-      //tile.classList.add('activated');
-      tile.style.backgroundColor = randomColor();
+      const rainbowToggle = document.querySelector('.rainbow-toggle.active');
+      
+      if (rainbowToggle) {
+        tile.style.backgroundColor = randomColor();
+      } else {
+        tile.classList.add('activated');
+      }
     })
   })
 }
@@ -52,6 +57,7 @@ function createCustomGrid () {
 }
 
 const resetButton = document.querySelector('.reset');
+const rainbowToggle = document.querySelector('.rainbow-toggle');
 
 resetButton.addEventListener('click', () => {
 
@@ -61,4 +67,8 @@ resetButton.addEventListener('click', () => {
   createCustomGrid();
 
   resetButton.textContent = 'Reset';
+})
+
+rainbowToggle.addEventListener('click', () => {
+  rainbowToggle.classList.toggle('active');
 })
