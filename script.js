@@ -1,8 +1,9 @@
 function createGrid(gridSideSize) {
 
+  if (gridSideSize > 100) {
+    gridSideSize = 100;
+  }
   const gridContainer = document.querySelector('.grid-container');
-  //gridContainer.style.height = ;
-  //gridContainer.style.width = ;
 
   for (let i = 1; i <= gridSideSize; i++) {
     for (let j = 1; j <= gridSideSize; j++) {
@@ -19,4 +20,4 @@ function createGrid(gridSideSize) {
   }
 }
 
-createGrid(5);
+createGrid(500);
