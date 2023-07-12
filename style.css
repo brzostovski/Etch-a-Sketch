@@ -20,5 +20,9 @@ body {
 }
 
 .tile:hover {
-  background-color: gray;
+  background-color: hotpink;
+}
+
+.activated {
+  background-color: black;
 }
