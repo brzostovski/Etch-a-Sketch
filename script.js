@@ -45,7 +45,7 @@ function etchASketch (gridSideSize) {
       if (rainbowToggle) {
         tile.style.backgroundColor = randomColor();
       } else {
-        tile.classList.add('activated');
+        tile.style.backgroundColor = 'white';
       }
     })
   })
