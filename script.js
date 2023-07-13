@@ -65,10 +65,12 @@ resetButton.addEventListener('click', () => {
   gridContainer.innerHTML = '';
 
   createCustomGrid();
-
-  resetButton.textContent = 'Reset';
 })
 
 rainbowToggle.addEventListener('click', () => {
   rainbowToggle.classList.toggle('active');
 })
+
+window.onload = () => {
+  etchASketch(64);
+}
