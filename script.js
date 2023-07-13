@@ -42,10 +42,12 @@ function etchASketch (gridSideSize) {
     tile.addEventListener('mouseover', () => {
       const rainbowToggle = document.querySelector('.rainbow-toggle.active');
       
-      if (rainbowToggle) {
-        tile.style.backgroundColor = randomColor();
-      } else {
-        tile.style.backgroundColor = 'white';
+      if (mouseDown === true) {
+        if (rainbowToggle) {
+          tile.style.backgroundColor = randomColor();
+        } else {
+          tile.style.backgroundColor = 'white';
+        }
       }
     })
   })
@@ -70,6 +72,10 @@ resetButton.addEventListener('click', () => {
 rainbowToggle.addEventListener('click', () => {
   rainbowToggle.classList.toggle('active');
 })
+
+let mouseDown = false;
+document.addEventListener('mousedown', () => (mouseDown = true))
+document.addEventListener('mouseup', () => (mouseDown = false))
 
 window.onload = () => {
   etchASketch(64);
