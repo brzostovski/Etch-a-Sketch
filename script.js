@@ -58,15 +58,22 @@ function createCustomGrid () {
   etchASketch(customSize);
 }
 
+const gridContainer = document.querySelector('.grid-container');
+
 const resetButton = document.querySelector('.reset');
+const eraseButton = document.querySelector('.erase')
 const rainbowToggle = document.querySelector('.rainbow-toggle');
 
 resetButton.addEventListener('click', () => {
-
-  const gridContainer = document.querySelector('.grid-container');
   gridContainer.innerHTML = '';
-
   createCustomGrid();
+})
+
+eraseButton.addEventListener('click', () => {
+  const tiles = document.querySelectorAll('.tile');
+  tiles.forEach((tile) => {
+    tile.style.backgroundColor = '';
+  })
 })
 
 rainbowToggle.addEventListener('click', () => {
