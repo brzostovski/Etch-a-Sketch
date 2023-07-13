@@ -34,5 +34,6 @@ button {
 }
 
 .active {
+  color: white;
   background-color: green;
 }
