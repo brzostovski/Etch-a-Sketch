@@ -2,6 +2,7 @@ const gridContainer = document.querySelector('.grid-container');
 const newGridButton = document.querySelector('#new-grid');
 const eraseButton = document.querySelector('#erase')
 const rainbowToggle = document.querySelector('#rainbow-toggle');
+const shadowToggle = document.querySelector('#shadow-toggle');
 
 let mouseDown = false;
   document.addEventListener('mousedown', () => (mouseDown = true))
@@ -10,6 +11,11 @@ let rainbowOn = false;
   rainbowToggle.addEventListener('click', () => {
     rainbowOn = !rainbowOn;
     rainbowToggle.classList.toggle('active');
+  })
+let shadowOn = false;
+  shadowToggle.addEventListener('click', () => {
+    shadowOn = !shadowOn;
+    shadowToggle.classList.toggle('active');
   })
 
 function createGrid(gridSideSize) {
@@ -87,8 +93,11 @@ window.onload = () => {
 }
 
 function changeOpacity(element) {
+  if (shadowOn === false) {
+    return 0;
+  }
   let newOpacity = 0;
-  let currentOpacity = parseFloat(element.style.opacity); //Use parseFloat because parseInt OF COURSE RETURNS 0 IF INPUT IS 0.1!!!
+  let currentOpacity = parseFloat(element.style.opacity);
   if (Number.isNaN(currentOpacity)) {
     newOpacity = .1;
   } else {
