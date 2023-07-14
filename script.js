@@ -35,14 +35,14 @@ function createCustomGrid () {
   startSketching();
 }
 
-function randomValue() {
-  return Math.floor(Math.random() * 256);
+function randomValue(maxValue) {
+  return Math.floor(Math.random() * (maxValue + 1));
 }
 
 function randomColor() {
-  const redValue = randomValue();
-  const greenValue = randomValue();
-  const blueValue = randomValue();
+  const redValue = randomValue(255);
+  const greenValue = randomValue(255);
+  const blueValue = randomValue(255);
   return `rgb(${redValue}, ${greenValue}, ${blueValue})`;
 }
 
