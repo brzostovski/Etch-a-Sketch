@@ -56,22 +56,28 @@ eraseButton.addEventListener('click', () => {
   })
 })
 
-rainbowToggle.addEventListener('click', () => {
-  rainbowToggle.classList.toggle('active');
-})
-
 let mouseDown = false;
 document.addEventListener('mousedown', () => (mouseDown = true))
 document.addEventListener('mouseup', () => (mouseDown = false))
 
+
+let rainbowOn = false;
+rainbowToggle.addEventListener('click', () => {
+  rainbowOn = !rainbowOn;
+  rainbowToggle.classList.toggle('active');
+})
+
 function startSketching() {
   const tiles = document.querySelectorAll('.tile');
   tiles.forEach((tile) => { //TO-DO: Try to write changeColor function to run on 'mouseover' in tile event listener
-    tile.addEventListener('mouseover', () => {
-      const rainbowToggle = document.querySelector('#rainbow-toggle.active');
-      
+
+    /*tile.addEventListener('click', () => {
+      const rainbowToggle = document.querySelector('')
+    })*/
+
+    tile.addEventListener('mouseover', () => {    
       if (mouseDown) {
-        if (rainbowToggle) { //TO-DO: Rewrite rainbow toggle as global variable (analogous mouseDown)
+        if (rainbowOn) { //TO-DO: Rewrite rainbow toggle as global variable (analogous mouseDown)
           tile.style.backgroundColor = randomColor();
         } else {
           tile.style.backgroundColor = 'white';
