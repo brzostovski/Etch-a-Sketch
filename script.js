@@ -32,30 +32,9 @@ function randomColor() {
   return `rgb(${redValue}, ${greenValue}, ${blueValue})`;
 }
 
-function etchASketch (gridSideSize) {
-
-  createGrid(gridSideSize);
-
-  const tiles = document.querySelectorAll('.tile');
-
-  tiles.forEach((tile) => {
-    tile.addEventListener('mouseover', () => {
-      const rainbowToggle = document.querySelector('.rainbow-toggle.active');
-      
-      if (mouseDown === true) {
-        if (rainbowToggle) {
-          tile.style.backgroundColor = randomColor();
-        } else {
-          tile.style.backgroundColor = 'white';
-        }
-      }
-    })
-  })
-}
-
 function createCustomGrid () {
   const customSize = window.prompt('Input grid side size:');
-  etchASketch(customSize);
+  createGrid(customSize);
 }
 
 const gridContainer = document.querySelector('.grid-container');
@@ -85,5 +64,21 @@ document.addEventListener('mousedown', () => (mouseDown = true))
 document.addEventListener('mouseup', () => (mouseDown = false))
 
 window.onload = () => {
-  etchASketch(64);
+  createGrid(64);
+
+  const tiles = document.querySelectorAll('.tile');
+
+  tiles.forEach((tile) => {
+    tile.addEventListener('mouseover', () => {
+      const rainbowToggle = document.querySelector('.rainbow-toggle.active');
+      
+      if (mouseDown === true) {
+        if (rainbowToggle) {
+          tile.style.backgroundColor = randomColor();
+        } else {
+          tile.style.backgroundColor = 'white';
+        }
+      }
+    })
+  })
 }
