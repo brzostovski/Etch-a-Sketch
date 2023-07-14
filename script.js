@@ -35,15 +35,16 @@ function randomColor() {
 function createCustomGrid () {
   const customSize = window.prompt('Input grid side size:');
   createGrid(customSize);
+  startSketching();
 }
 
 const gridContainer = document.querySelector('.grid-container');
 
-const resetButton = document.querySelector('.reset');
-const eraseButton = document.querySelector('.erase')
-const rainbowToggle = document.querySelector('.rainbow-toggle');
+const newGridButton = document.querySelector('#new-grid');
+const eraseButton = document.querySelector('#erase')
+const rainbowToggle = document.querySelector('#rainbow-toggle');
 
-resetButton.addEventListener('click', () => {
+newGridButton.addEventListener('click', () => {
   gridContainer.innerHTML = '';
   createCustomGrid();
 })
@@ -63,17 +64,14 @@ let mouseDown = false;
 document.addEventListener('mousedown', () => (mouseDown = true))
 document.addEventListener('mouseup', () => (mouseDown = false))
 
-window.onload = () => {
-  createGrid(64);
-
+function startSketching() {
   const tiles = document.querySelectorAll('.tile');
-
-  tiles.forEach((tile) => {
+  tiles.forEach((tile) => { //TO-DO: Try to write changeColor function to run on 'mouseover' in tile event listener
     tile.addEventListener('mouseover', () => {
-      const rainbowToggle = document.querySelector('.rainbow-toggle.active');
+      const rainbowToggle = document.querySelector('#rainbow-toggle.active');
       
       if (mouseDown) {
-        if (rainbowToggle) {
+        if (rainbowToggle) { //TO-DO: Rewrite rainbow toggle as global variable (analogous mouseDown)
           tile.style.backgroundColor = randomColor();
         } else {
           tile.style.backgroundColor = 'white';
@@ -81,4 +79,9 @@ window.onload = () => {
       }
     })
   })
+}
+
+window.onload = () => {
+  createGrid(64);
+  startSketching();
 }
