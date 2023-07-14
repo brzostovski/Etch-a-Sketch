@@ -47,6 +47,7 @@ function randomColor() {
 }
 
 function changeColor(element) {
+  changeOpacity(element);
   if (rainbowOn) {
     element.style.backgroundColor = randomColor();
   } else {
@@ -58,7 +59,6 @@ function startSketching() {
   const tiles = document.querySelectorAll('.tile');
   tiles.forEach((tile) => {
     tile.addEventListener('click', () => {
-      changeOpacity(tile);
       changeColor(tile);
     })
     tile.addEventListener('mouseover', () => {
@@ -88,7 +88,7 @@ window.onload = () => {
 
 function changeOpacity(element) {
   let newOpacity = 0;
-  let currentOpacity = parseInt(element.style.opacity); //TO-DO: FIX THIS. Works fine on first iteration, on 2nd iteration for some reason currentOpacity becomes 0 again.
+  let currentOpacity = parseFloat(element.style.opacity); //Use parseFloat because parseInt OF COURSE RETURNS 0 IF INPUT IS 0.1!!!
   if (Number.isNaN(currentOpacity)) {
     newOpacity = .1;
   } else {
