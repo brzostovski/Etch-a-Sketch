@@ -1,21 +1,15 @@
 function createGrid(gridSideSize) {
-
+  const gridContainer = document.querySelector('.grid-container');
   if (gridSideSize > 100) {
     gridSideSize = 100;
   }
-
-  const gridContainer = document.querySelector('.grid-container');
-
   for (let i = 1; i <= gridSideSize; i++) {
     for (let j = 1; j <= gridSideSize; j++) {
-
       const newTile = document.createElement('div');
       newTile.classList.add('tile');
       newTile.setAttribute('id', `tile_${i}.${j}`);
-
       newTile.style.gridRow = i;
       newTile.style.gridColumn = j;
-
       gridContainer.appendChild(newTile);
     }
   }
@@ -77,12 +71,10 @@ function changeColor(item) {
 
 function startSketching() {
   const tiles = document.querySelectorAll('.tile');
-  tiles.forEach((tile) => { //TO-DO: Try to write changeColor function to run on 'mouseover' in tile event listener
-
+  tiles.forEach((tile) => {
     tile.addEventListener('click', () => {
       changeColor(tile);
     })
-
     tile.addEventListener('mouseover', () => {    
       if (mouseDown) {
         changeColor(tile);
