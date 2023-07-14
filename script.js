@@ -52,8 +52,20 @@ function randomColor() {
   return `rgb(${redValue}, ${greenValue}, ${blueValue})`;
 }
 
+function changeOpacity(element) {
+  let newOpacity = 0;
+  let currentOpacity = parseFloat(element.style.opacity);
+  if (shadowOn === false) {
+    newOpacity = 1;
+  } else if (Number.isNaN(currentOpacity)) {
+    newOpacity = .1;
+  } else {
+    newOpacity = currentOpacity + 0.1;
+  }
+  element.style.opacity = newOpacity;
+}
+
 function changeColor(element) {
-  changeOpacity(element);
   if (rainbowOn) {
     element.style.backgroundColor = randomColor();
   } else {
@@ -65,10 +77,12 @@ function startSketching() {
   const tiles = document.querySelectorAll('.tile');
   tiles.forEach((tile) => {
     tile.addEventListener('click', () => {
+      changeOpacity(tile);
       changeColor(tile);
     })
     tile.addEventListener('mouseover', () => {
       if (mouseDown) {
+        changeOpacity(tile);
         changeColor(tile);
       }
     })
@@ -90,18 +104,4 @@ eraseButton.addEventListener('click', () => {
 window.onload = () => {
   createGrid(64);
   startSketching();
-}
-
-function changeOpacity(element) {
-  if (shadowOn === false) {
-    return 0;
-  }
-  let newOpacity = 0;
-  let currentOpacity = parseFloat(element.style.opacity);
-  if (Number.isNaN(currentOpacity)) {
-    newOpacity = .1;
-  } else {
-    newOpacity = currentOpacity + 0.1;
-  }
-  element.style.opacity = newOpacity;
 }
