@@ -67,25 +67,25 @@ rainbowToggle.addEventListener('click', () => {
   rainbowToggle.classList.toggle('active');
 })
 
+function changeColor(item) {
+  if (rainbowOn) {
+    item.style.backgroundColor = randomColor();
+  } else {
+    item.style.backgroundColor = 'white';
+  }
+}
+
 function startSketching() {
   const tiles = document.querySelectorAll('.tile');
   tiles.forEach((tile) => { //TO-DO: Try to write changeColor function to run on 'mouseover' in tile event listener
 
     tile.addEventListener('click', () => {
-      if (rainbowOn) {
-        tile.style.backgroundColor = randomColor();
-      } else {
-        tile.style.backgroundColor = 'white';
-      }
+      changeColor(tile);
     })
 
     tile.addEventListener('mouseover', () => {    
       if (mouseDown) {
-        if (rainbowOn) {
-          tile.style.backgroundColor = randomColor();
-        } else {
-          tile.style.backgroundColor = 'white';
-        }
+        changeColor(tile);
       }
     })
   })
