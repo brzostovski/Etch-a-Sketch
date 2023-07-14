@@ -30,7 +30,7 @@ button {
 }
 
 .tile:hover {
-  background-color: hotpink;
+  background-color: #3882f6;
 }
 
 .active {
