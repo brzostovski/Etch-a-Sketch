@@ -98,6 +98,7 @@ eraseButton.addEventListener('click', () => {
   const tiles = document.querySelectorAll('.tile');
   tiles.forEach((tile) => {
     tile.style.backgroundColor = '';
+    tile.style.opacity = '';
   })
 })
 
