@@ -71,13 +71,17 @@ function startSketching() {
   const tiles = document.querySelectorAll('.tile');
   tiles.forEach((tile) => { //TO-DO: Try to write changeColor function to run on 'mouseover' in tile event listener
 
-    /*tile.addEventListener('click', () => {
-      const rainbowToggle = document.querySelector('')
-    })*/
+    tile.addEventListener('click', () => {
+      if (rainbowOn) {
+          tile.style.backgroundColor = randomColor();
+        } else {
+          tile.style.backgroundColor = 'white';
+        }
+    })
 
     tile.addEventListener('mouseover', () => {    
       if (mouseDown) {
-        if (rainbowOn) { //TO-DO: Rewrite rainbow toggle as global variable (analogous mouseDown)
+        if (rainbowOn) {
           tile.style.backgroundColor = randomColor();
         } else {
           tile.style.backgroundColor = 'white';
