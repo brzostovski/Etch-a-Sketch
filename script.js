@@ -72,7 +72,7 @@ window.onload = () => {
     tile.addEventListener('mouseover', () => {
       const rainbowToggle = document.querySelector('.rainbow-toggle.active');
       
-      if (mouseDown === true) {
+      if (mouseDown) {
         if (rainbowToggle) {
           tile.style.backgroundColor = randomColor();
         } else {
