@@ -46,11 +46,11 @@ function randomColor() {
   return `rgb(${redValue}, ${greenValue}, ${blueValue})`;
 }
 
-function changeColor(item) {
+function changeColor(element) {
   if (rainbowOn) {
-    item.style.backgroundColor = randomColor();
+    element.style.backgroundColor = randomColor();
   } else {
-    item.style.backgroundColor = 'white';
+    element.style.backgroundColor = 'white';
   }
 }
 
@@ -58,6 +58,7 @@ function startSketching() {
   const tiles = document.querySelectorAll('.tile');
   tiles.forEach((tile) => {
     tile.addEventListener('click', () => {
+      changeOpacity(tile);
       changeColor(tile);
     })
     tile.addEventListener('mouseover', () => {
@@ -83,4 +84,15 @@ eraseButton.addEventListener('click', () => {
 window.onload = () => {
   createGrid(64);
   startSketching();
+}
+
+function changeOpacity(element) {
+  let newOpacity = 0;
+  let currentOpacity = parseInt(element.style.opacity); //TO-DO: FIX THIS. Works fine on first iteration, on 2nd iteration for some reason currentOpacity becomes 0 again.
+  if (Number.isNaN(currentOpacity)) {
+    newOpacity = .1;
+  } else {
+    newOpacity = currentOpacity + 0.1;
+  }
+  element.style.opacity = newOpacity;
 }
