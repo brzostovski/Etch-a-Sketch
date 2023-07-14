@@ -73,10 +73,10 @@ function startSketching() {
 
     tile.addEventListener('click', () => {
       if (rainbowOn) {
-          tile.style.backgroundColor = randomColor();
-        } else {
-          tile.style.backgroundColor = 'white';
-        }
+        tile.style.backgroundColor = randomColor();
+      } else {
+        tile.style.backgroundColor = 'white';
+      }
     })
 
     tile.addEventListener('mouseover', () => {    
