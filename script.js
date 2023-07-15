@@ -1,21 +1,21 @@
-const gridContainer = document.querySelector('.grid-container');
-const newGridButton = document.querySelector('#new-grid');
-const eraseButton = document.querySelector('#erase')
-const rainbowToggle = document.querySelector('#rainbow-toggle');
-const shadowToggle = document.querySelector('#shadow-toggle');
+const GRID_CONTAINER = document.querySelector('.grid-container');
+const NEW_GRID_BUTTON = document.querySelector('#new-grid');
+const ERASE_BUTTON = document.querySelector('#erase')
+const RAINBOW_TOGGLE = document.querySelector('#rainbow-toggle');
+const SHADOW_TOGGLE = document.querySelector('#shadow-toggle');
 
 let mouseDown = false;
   document.addEventListener('mousedown', () => (mouseDown = true))
   document.addEventListener('mouseup', () => (mouseDown = false))
 let rainbowOn = false;
-  rainbowToggle.addEventListener('click', () => {
+  RAINBOW_TOGGLE.addEventListener('click', () => {
     rainbowOn = !rainbowOn;
-    rainbowToggle.classList.toggle('active');
+    RAINBOW_TOGGLE.classList.toggle('active');
   })
 let shadowOn = false;
-  shadowToggle.addEventListener('click', () => {
+  SHADOW_TOGGLE.addEventListener('click', () => {
     shadowOn = !shadowOn;
-    shadowToggle.classList.toggle('active');
+    SHADOW_TOGGLE.classList.toggle('active');
   })
 
 function createGrid(gridSideSize) {
@@ -46,10 +46,10 @@ function randomValue(maxValue) {
 }
 
 function randomColor() {
-  const redValue = randomValue(255);
-  const greenValue = randomValue(255);
-  const blueValue = randomValue(255);
-  return `rgb(${redValue}, ${greenValue}, ${blueValue})`;
+  const valueR = randomValue(255);
+  const valueG = randomValue(255);
+  const valueB = randomValue(255);
+  return `rgb(${valueR}, ${valueG}, ${valueB})`;
 }
 
 function changeOpacity(element) {
@@ -66,11 +66,19 @@ function changeOpacity(element) {
 }
 
 function changeColor(element) {
-  if (rainbowOn) {
+  switch (rainbowOn) {
+    case true:
+      element.style.backgroundColor = randomColor();
+      break;
+    case false:
+      element.style.backgroundColor = 'white';
+      break;
+  }
+  /*if (rainbowOn) {
     element.style.backgroundColor = randomColor();
   } else {
     element.style.backgroundColor = 'white';
-  }
+  }*/
 }
 
 function startSketching() {
@@ -89,12 +97,12 @@ function startSketching() {
   })
 }
 
-newGridButton.addEventListener('click', () => {
-  gridContainer.innerHTML = '';
+NEW_GRID_BUTTON.addEventListener('click', () => {
+  GRID_CONTAINER.innerHTML = '';
   createCustomGrid();
 })
 
-eraseButton.addEventListener('click', () => {
+ERASE_BUTTON.addEventListener('click', () => {
   const tiles = document.querySelectorAll('.tile');
   tiles.forEach((tile) => {
     tile.style.backgroundColor = '';
