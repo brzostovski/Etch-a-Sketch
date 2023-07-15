@@ -74,11 +74,6 @@ function changeColor(element) {
       element.style.backgroundColor = 'white';
       break;
   }
-  /*if (rainbowOn) {
-    element.style.backgroundColor = randomColor();
-  } else {
-    element.style.backgroundColor = 'white';
-  }*/
 }
 
 function startSketching() {
