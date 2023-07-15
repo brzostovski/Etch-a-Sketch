@@ -66,13 +66,10 @@ function changeOpacity(element) {
 }
 
 function changeColor(element) {
-  switch (rainbowOn) {
-    case true:
-      element.style.backgroundColor = randomColor();
-      break;
-    case false:
-      element.style.backgroundColor = 'white';
-      break;
+  if (rainbowOn) {
+    element.style.backgroundColor = randomColor();
+  } else {
+    element.style.backgroundColor = 'white';
   }
 }
 
